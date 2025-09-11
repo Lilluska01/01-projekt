@@ -37,7 +37,7 @@ print(szotar)
 eletkor = int(input("Kérem adja meg az életkorát: "))
 eletkor += 5
 print(eletkor)
-print(szotar["név"], "\tkora:\n", eletkor, sep="-", end="\n")
+print(szotar["név"], "\tkora:\n", eletkor, sep="_", end="\n")
 
 
 print("valami".rjust(50, "*"))
