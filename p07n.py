@@ -49,6 +49,15 @@ def osszesites_sql(self):
         db = conn.cursor()
         db.execute("SELECT egy, ket, ha, negy, ot, hat FROM kocka")
         sorok = db.fetchall()
+        osszesen = [0 for _ in range(7)]
+        for sor in sorok:
+            osszesen[1] += sor[0]
+            osszesen[2] += sor[1]
+            osszesen[3] += sor[2]
+            osszesen[4] += sor[3]
+            osszesen[5] += sor[4]
+            osszesen[6] += sor[5]
+
         conn.close()
     except:
         messagebox.showerror("Hiba", "Nem sikerült az összesítés")
