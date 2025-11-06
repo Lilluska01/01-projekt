@@ -17,6 +17,10 @@ class KockaDobasMentes(p07.KockaDobas):
         self.mentes_sql = tk.Button(master, text="Mentés SQL-be", command=self.mentes_sql)
         self.mentes_sql.grid(row=3, column=2)
 
+        # Összesítés címke
+        self.osszes_cimke_szovege = tk.StringVar(value="......")
+        self.osszes_cimke = tk.Label(self.master, textvariable=self.osszes_cimke_szovege, font=("Ariel", 16))
+        self.osszes_cimke.grid(row=2, column=2, pady=20)
 
 
     def mentes_sql(self):
@@ -34,9 +38,20 @@ class KockaDobasMentes(p07.KockaDobas):
                        )
             conn.commit()
             conn.close()
+            self.osszesites_sql()
         except:
             messagebox.showerror("Hiba", "Nem sikerült az SQL-be mentés!")
 
+
+def osszesites_sql(self):
+    try:
+        conn = sqlite3.connect("kockadobas.db")
+        db = conn.cursor()
+        db.execute("SELECT egy, ket, ha, negy, ot, hat FROM kocka")
+        sorok = db.fetchall()
+        conn.close()
+    except:
+        messagebox.showerror("Hiba", "Nem sikerült az összesítés")
 
     def mentes_csvbe(self):
         fajlnev = "mentes.csv"
