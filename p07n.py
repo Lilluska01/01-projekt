@@ -57,8 +57,16 @@ def osszesites_sql(self):
             osszesen[4] += sor[3]
             osszesen[5] += sor[4]
             osszesen[6] += sor[5]
-
         conn.close()
+
+        self.osszes_cimke_szovege.set(
+            f"1 - {self.osszesen[1]} \n"
+            f"2 - {self.osszesen[2]} \n"
+            f"3 - {self.osszesen[3]} \n"
+            f"4 - {self.osszesen[4]} \n"
+            f"5 - {self.osszesen[5]} \n"
+            f"6 - {self.osszesen[6]}"
+        )
     except:
         messagebox.showerror("Hiba", "Nem sikerült az összesítés")
 
